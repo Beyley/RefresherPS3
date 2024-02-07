@@ -10,13 +10,14 @@ jobs:
 
   build:
 
-    runs-on: macos-14
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Install Docker
-      run: |
-        brew install docker
+
+    - uses: docker/setup-qemu-action@v3.0.0
+      with:
+        platforms: arm64
       
     - uses: actions/checkout@v3
     - name: Run the build
-      run: docker run -v `pwd`:/RefresherPS3 zeldin/ps3dev-docker /RefresherPS3/docker-build-internal.sh
+      run: docker run --platform=linux/arm64 -v /usr/bin/qemu-aarch64:/usr/bin/qemu-aarch64 -v `pwd`:/RefresherPS3 zeldin/ps3dev-docker /RefresherPS3/docker-build-internal.sh
