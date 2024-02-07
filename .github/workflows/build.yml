@@ -19,5 +19,8 @@ jobs:
         platforms: arm64
       
     - uses: actions/checkout@v3
+      with:
+        submodules: true
+        
     - name: Run the build
       run: docker run --platform=linux/arm64 -v /usr/bin/qemu-aarch64:/usr/bin/qemu-aarch64 -v `pwd`:/RefresherPS3 zeldin/ps3dev-docker /RefresherPS3/ci-docker-build.sh
