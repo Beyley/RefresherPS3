@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include <unistd.h>
 #include <cJSON.h>
+#include <sys/stat.h>
 
 #include "assert.h"
 #include "server_list.h"
